@@ -44,5 +44,10 @@ export async function getServerSideProps(context: NextPageContext) {
     };
   } catch (err: any) {
     console.error(err?.message);
+    return {
+      props: {
+        registrations: []
+      }
+    }
   }
 }
