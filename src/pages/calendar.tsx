@@ -30,7 +30,7 @@ export type registration = {
 };
 
 export default function calendar({ registrations }: pageProps) {
-  <Calendar registrations={registrations} />;
+  return <Calendar registrations={registrations} />;
 }
 
 export async function getServerSideProps(context: NextPageContext) {
@@ -46,8 +46,8 @@ export async function getServerSideProps(context: NextPageContext) {
     console.error(err?.message);
     return {
       props: {
-        registrations: []
-      }
-    }
+        registrations: [],
+      },
+    };
   }
 }
