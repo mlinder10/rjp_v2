@@ -106,14 +106,14 @@ export default function Form({
 
   async function reserve() {
     if (getPrice() === undefined) return;
-    let id = await axios.post(`${window.location.origin}/api/register`, {
+    let id = await axios.post(`${process.env.NEXT_PUBLIC_ROOT}/api/register`, {
       type: "generate-id",
     });
 
     if (id.data.message === "id creation failed") return;
 
     let surl =
-      window.location.origin +
+      process.env.NEXT_PUBLIC_ROOT +
       `/register?price=${getPrice()}&residency=${residency}&pavilion=${
         options.pavilion
       }&time=${options.time}&date=${options.date}&month=${options.month}&id=${
@@ -123,7 +123,7 @@ export default function Form({
     let oid = 0;
     try {
       let orderNum = await axios.get(
-        `${window.location.origin}/api/register?type=true`
+        `${process.env.NEXT_PUBLIC_ROOT}/api/register?type=true`
       );
       oid = orderNum.data.message;
     } catch (err: any) {

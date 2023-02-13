@@ -13,7 +13,7 @@ export async function getServerSideProps(context: NextPageContext) {
     delete obj.date
 
     let res = await axios.post(
-      `${window.location.origin}/api/register`,
+      `${process.env.NEXT_PUBLIC_ROOT}/api/register`,
       obj
     );
     console.log(res.data);

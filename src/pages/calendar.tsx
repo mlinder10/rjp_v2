@@ -35,7 +35,7 @@ export default function calendar({ registrations }: pageProps) {
 
 export async function getServerSideProps(context: NextPageContext) {
   try {
-    let res = await axios.get(`${window.location.origin}/api/register`);
+    let res = await axios.get(`${process.env.NEXT_PUBLIC_ROOT}/api/register`);
 
     return {
       props: {
