@@ -1,0 +1,44 @@
+{
+  "Upper": {
+    "resident": {
+        "weekend": 40.00,
+        "weekday": 25.00
+    },
+    "nonresident": {
+        "weekend": 50.00,
+        "weekday": 50.00
+    },
+    "nonprofit": {
+        "weekend": 25.00,
+        "weekday": 20.00
+    }
+  },
+  "Lower": {
+    "resident": {
+        "weekend": 40.00,
+        "weekday": 25.00
+    },
+    "nonresident": {
+        "weekend": 50.00,
+        "weekday": 50.00
+    },
+    "nonprofit": {
+        "weekend": 25.00,
+        "weekday": 20.00
+    }
+  },
+  "Hamlet": {
+    "resident": {
+        "weekend": 25.00,
+        "weekday": 15.00
+    },
+    "nonresident": {
+        "weekend": 35.00,
+        "weekday": 35.00
+    },
+    "nonprofit": {
+        "weekend": 20.00,
+        "weekday": 15.00
+    }
+  }
+}

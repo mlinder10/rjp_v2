@@ -1,0 +1,18 @@
+.section {
+  padding: 2rem;
+}
+
+.pavilion-input,
+.residency-input {
+  display: flex;
+  flex-direction: column;
+  padding-block: 2rem;
+}
+
+.pavilion-input > div,
+.residency-input > div {
+  display: flex;
+  align-items: center;
+  width: 12rem;
+  justify-content: space-between;
+}

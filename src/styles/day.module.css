@@ -1,0 +1,77 @@
+.link-wrapper {
+  position: relative;
+  display: flex;
+  height: 5rem;
+}
+
+.link-wrapper button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.left {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+}
+
+.left > button,
+.right > button {
+  height: 100%;
+}
+
+.both {
+  height: 100%;
+  width: 4rem;
+  transition: 0.3s;
+}
+
+.morning,
+.evening {
+  height: 100%;
+  width: 4rem;
+  transition: 0.3s;
+}
+
+.green {
+  border: 1px solid #407d7f;
+  background-color: #5f9ea0;
+}
+
+.red {
+  border: 1px solid #80320d;
+  background-color: #a0522d;
+}
+
+.evening.green:hover {
+  transform-origin: bottom right;
+  scale: 1.2;
+}
+
+.morning.green:hover {
+  transform-origin: top right;
+  scale: 1.2;
+}
+
+.both.green:hover {
+  transform-origin: center left;
+  scale: 1.3 1;
+}
+
+.date {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  font-size: 2rem;
+  font-weight: bold;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: #0009;
+  pointer-events: none;
+}
