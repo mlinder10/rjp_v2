@@ -2,9 +2,19 @@ import Head from "next/head";
 import styles from "@/styles/index.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
+import axios from "axios";
 
+async function open() {
+  let res = await axios.get(`${process.env.NEXT_PUBLIC_ROOT}/api/register`)
+  console.log(res.data)
+}
 
 export default function Home() {
+  useEffect(() => {
+    open()
+  }, [])
+
   return (
     <>
       <Head>
@@ -19,9 +29,6 @@ export default function Home() {
       </div>
       <header className={styles.header}>
         <h1>Russell Joy Park</h1>
-        {/* <Link className={styles.contact} href="https://villageofffedonia.com/contact-us.html">
-          Contact Us
-        </Link> */}
       </header>
       <main className={styles.main}>
         <div className={styles["img-wrapper"]}>
