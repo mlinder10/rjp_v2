@@ -34,20 +34,33 @@ export default function calendar({ registrations }: pageProps) {
 }
 
 export async function getServerSideProps(context: NextPageContext) {
+  let registrations = [];
+
   try {
     let res = await axios.get(`${process.env.NEXT_PUBLIC_ROOT}/api/register`);
-
-    return {
-      props: {
-        registrations: res.data,
-      },
-    };
+    
+    for (let r of res.data) {
+      if (!r.hasPaid) continue;
+      registrations.push(r);
+    }
   } catch (err: any) {
     console.error(err?.message);
-    return {
-      props: {
-        registrations: [],
-      },
-    };
   }
+
+  return {
+    props: {
+      registrations: [
+        {
+          time: "morning",
+          day: "1",
+          month: "January",
+          name: "name",
+          address: "address",
+          residency: "resident",
+          pavilion: "Upper",
+          hasPaid: true
+        }
+      ],
+    },
+  };
 }

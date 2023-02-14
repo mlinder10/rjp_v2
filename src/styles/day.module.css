@@ -1,13 +1,19 @@
 .link-wrapper {
   position: relative;
   display: flex;
-  height: 5rem;
+  height: 6rem;
+  gap: 1px;
+  cursor: not-allowed;
 }
 
 .link-wrapper button {
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.link-wrapper button:has(.red) {
+  pointer-events: none;
 }
 
 .left {
@@ -19,6 +25,7 @@
 .right {
   display: flex;
   flex-direction: column;
+  gap: 1px;
 }
 
 .left > button,
@@ -39,14 +46,14 @@
   transition: 0.3s;
 }
 
+.red,
 .green {
-  border: 1px solid #407d7f;
-  background-color: #5f9ea0;
+  border: 1px solid gray;
+  background-color: white;
 }
 
 .red {
-  border: 1px solid #80320d;
-  background-color: #a0522d;
+  background-color: sienna;
 }
 
 .evening.green:hover {
@@ -74,4 +81,8 @@
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: #0009;
   pointer-events: none;
+}
+
+.selected:not(.red) {
+  background-color: cadetblue;
 }

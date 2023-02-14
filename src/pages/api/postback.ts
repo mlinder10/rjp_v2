@@ -1,11 +1,16 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import Registration from "../../../models/registration";
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   switch (req.method) {
     case "GET":
       try {
-        let query = req.query;
-        console.log(query);
+        let { oid } = req.query;
+        await Registration.updateOne({ oid }, { hasPaid: true });
+        console.log(oid);
         return res.status(200).json({ message: "Transaction Successful" });
       } catch (err: any) {
         console.error(err.message);

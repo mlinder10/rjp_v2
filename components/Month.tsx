@@ -49,9 +49,7 @@ export default function Month({
   if (selected !== name) return <></>;
 
   return (
-    <section
-      className={`${styles.section} ${selected === name ? styles.visible : ""}`}
-    >
+    <section className={styles.section}>
       <div className={styles.month}>
         <span>SUN</span>
         <span>MON</span>
@@ -62,6 +60,7 @@ export default function Month({
         <span>SAT</span>
         {createDays().map((d) => (
           <Day
+            month={name}
             options={options}
             changeOptions={changeOptions}
             filter={filter}

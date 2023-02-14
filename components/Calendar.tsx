@@ -142,16 +142,22 @@ export default function Calendar({ registrations }: pageProps) {
   return (
     <>
       <header className={styles.header}>
-        <Link style={{ zIndex: 3 }} href="/">
-          Home
+        <Link className={styles["home-link"]} style={{ zIndex: 3 }} href="/">
+          RJP
         </Link>
         <div className={styles.nav}>
-          <button onClick={() => changeMonth(false)} className={styles.back}>
-            {"<"}
+          <button
+            onClick={() => changeMonth(false)}
+            className={`${styles.back} material-symbols-outlined`}
+          >
+            chevron_left
           </button>
           <p>{selectedMonth}</p>
-          <button onClick={() => changeMonth(true)} className={styles.next}>
-            {">"}
+          <button
+            onClick={() => changeMonth(true)}
+            className={`${styles.next} material-symbols-outlined`}
+          >
+            chevron_right
           </button>
         </div>
         <Filter

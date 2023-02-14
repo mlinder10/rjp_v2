@@ -38,8 +38,8 @@ export default function Filter({
         {selected.map((s) => (
           <div key={s} className={styles["single-selected"]}>
             <span>{s}</span>
-            <span onClick={() => changeFilter(s)} className={styles.close}>
-              X
+            <span onClick={() => changeFilter(s)} className={`${styles.close} material-symbols-outlined`}>
+              close
             </span>
           </div>
         ))}
@@ -47,19 +47,17 @@ export default function Filter({
       <div className={styles.right}>
         <div className={styles.break}></div>
         <span
-          className={showing ? styles.toggle : styles.drop}
+          className={`${showing ? styles.toggle : styles.drop} material-symbols-outlined`}
           onClick={toggleOptions}
         >
-          V
+          arrow_drop_down
         </span>
       </div>
       <div className={styles.options}>
         {options.map((o) => (
-          <p
+          showing && !selected.includes(o) && <p
             key={o}
-            className={`${
-              showing && !selected.includes(o) ? styles.visible : ""
-            }`}
+            className={styles.visible}
             onClick={() => changeFilter(o)}
           >
             {o}

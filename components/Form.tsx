@@ -54,7 +54,7 @@ export default function Form({
       residency === ""
     )
       return "Please Enter All Fields";
-    return getPrice();
+    return "$" + getPrice();
   }
 
   function choosePavilion(pavilion: string) {
@@ -106,28 +106,34 @@ export default function Form({
 
   async function reserve() {
     if (getPrice() === undefined) return;
-    let id = await axios.post(`${process.env.NEXT_PUBLIC_ROOT}/api/register`, {
-      type: "generate-id",
-    });
 
-    if (id.data.message === "id creation failed") return;
-
-    let surl =
-      process.env.NEXT_PUBLIC_ROOT +
-      `/register?price=${getPrice()}&residency=${residency}&pavilion=${
-        options.pavilion
-      }&time=${options.time}&date=${options.date}&month=${options.month}&id=${
-        id.data.message
-      }`;
-
-    let oid = 0;
+    let oid = "0";
     try {
       let orderNum = await axios.get(
-        `${process.env.NEXT_PUBLIC_ROOT}/api/register?type=true`
+        `${process.env.NEXT_PUBLIC_ROOT}/api/register?type=id`
       );
       oid = orderNum.data.message;
     } catch (err: any) {
       console.error(err.message);
+      return;
+    }
+
+    try {
+      let id = await axios.post(
+        `${process.env.NEXT_PUBLIC_ROOT}/api/register`,
+        {
+          pavilion: options.pavilion,
+          time: options.time,
+          residency: residency,
+          price: getPrice(),
+          month: options.month,
+          day: options.date,
+          oid,
+        }
+      );
+    } catch (err: any) {
+      console.error(err.message);
+      return;
     }
 
     window.open(
@@ -140,19 +146,10 @@ export default function Form({
           process.env.NEXT_PUBLIC_TYPE
         }&payfor=${"Pavilion"}&oid=${oid}&amt=${getPrice()}&account=${
           process.env.NEXT_PUBLIC_ACCOUNT
-        }&surl=${surl}&rurl=${window.location.href}`
+        }&surl=${window.location.origin}&rurl=${window.location.href}`
       )
     );
   }
-
-  // name (Enter)
-  // address (Enter)
-  // - pavilion
-  // - time
-  // - residency
-  // - price
-  // - month
-  // - day
 
   return (
     <section className={styles.section}>

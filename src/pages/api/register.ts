@@ -4,59 +4,17 @@ import db from "@/utils/db";
 import fs from "fs";
 console.log(db.id);
 
-function handleOrderID() {
-  let orderID = fs.readFileSync("./orders.txt", { encoding: "utf-8" });
-  if (typeof orderID === "string") {
-    fs.writeFileSync("./orders.txt", (parseInt(orderID) + 1).toString(), {
+function getID() {
+  try {
+    let id = fs.readFileSync("./orders.txt", { encoding: "utf-8" });
+    fs.writeFileSync("./orders.txt", (parseInt(id) + 1).toString(), {
       encoding: "utf-8",
     });
-  }
-  return orderID;
-}
 
-function addID() {
-  try {
-    let ids = fs.readFileSync("./orderID.txt", { encoding: "utf-8" });
-    let idList = ids.split("\n");
-    let unique = false;
-    let newID = "0";
-    while (!unique) {
-      unique = true;
-      newID = Math.floor(Math.random() * 1000000).toString();
-      for (let id of idList) {
-        if (id === newID) unique = false;
-      }
-    }
-    idList.push(newID);
-
-    let content = idList.join("\n");
-    fs.writeFileSync("./orderID.txt", content, { encoding: "utf-8" });
-
-    return newID;
+    return id;
   } catch (err: any) {
     console.error(err.message);
     return "0";
-  }
-}
-
-function checkID(id: string) {
-  try {
-    let ids = fs.readFileSync("./orderID.txt", { encoding: "utf-8" });
-    let idList = ids.split("\n");
-    let valid = false;
-    for (let i of idList) {
-      if (id === i) valid = true;
-    }
-
-    idList = idList.filter((i) => i !== id);
-    let content = "";
-    for (let i of idList) content += i + "\n";
-    fs.writeFileSync("./orderID.txt", content, { encoding: "utf-8" });
-
-    return valid;
-  } catch (err: any) {
-    console.error(err.message);
-    return false;
   }
 }
 
@@ -67,8 +25,13 @@ export default async function handler(
   switch (req.method) {
     case "GET":
       try {
-        if (req.query.type !== undefined)
-          return res.status(201).json({ message: handleOrderID() });
+        if (req.query.type === "id") {
+          let id = getID();
+          if (id !== "0") return res.status(200).json({ message: getID() });
+          return res
+            .status(500)
+            .json({ message: "Error reading/writing orders" });
+        }
         let registrations = await Registration.find();
         return res.status(200).json(registrations);
       } catch (err: any) {
@@ -77,16 +40,6 @@ export default async function handler(
       }
     case "POST":
       try {
-        if (req.body.type === "generate-id") {
-          let newID = addID();
-          console.log(newID);
-          if (newID !== "0") return res.status(201).json({ message: newID });
-          return res.status(500).json({ message: "id creation faild" });
-        }
-
-        if (!checkID(req.body.id))
-          return res.status(403).json({ message: "access denied" });
-
         let newRegsitration = await Registration.create(req.body);
         await newRegsitration.save();
         return res

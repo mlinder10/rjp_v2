@@ -1,5 +1,5 @@
 import { option, registration } from "@/pages/calendar";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../src/styles/day.module.css";
 
 type dayProps = {
@@ -7,6 +7,7 @@ type dayProps = {
   options: option;
   registrations: registration[];
   filter: string[];
+  month: string;
   changeOptions: (date: string, pavilion: string, time: string) => void;
 };
 
@@ -14,9 +15,12 @@ export default function Day({
   options,
   date,
   registrations,
+  month,
   filter,
   changeOptions,
 }: dayProps) {
+  const [selected, setSelected] = useState("none");
+
   function checkAvailability(time: string) {
     let count = 0;
     for (let regsitration of registrations) {
@@ -29,10 +33,18 @@ export default function Day({
     let pavilion = options.pavilion;
     if (filter.length === 1) pavilion = filter[0];
     for (let r of registrations) {
-      if (r.pavilion === options.pavilion) pavilion = ""
+      if (r.pavilion === pavilion) pavilion = "";
     }
     changeOptions(date.toString(), pavilion, time);
   }
+
+  useEffect(() => {
+    if (options.date === date.toString() && options.month === month) {
+      if (options.time === "both") setSelected("both");
+      if (options.time === "morning") setSelected("morning");
+      if (options.time === "evening") setSelected("evening");
+    }
+  }, [options, month]);
 
   if (date === 0) return <span></span>;
 
@@ -46,7 +58,7 @@ export default function Day({
                 checkAvailability("morning") && checkAvailability("evening")
                   ? styles.green
                   : styles.red
-              }`}
+              } ${selected === "both" ? styles.selected : ""}`}
             ></div>
           </button>
         </div>
@@ -55,14 +67,14 @@ export default function Day({
             <div
               className={`${styles.morning} ${
                 checkAvailability("morning") ? styles.green : styles.red
-              }`}
+              } ${selected === "morning" ? styles.selected : ""}`}
             ></div>
           </button>
           <button onClick={() => handleSelect("evening")}>
             <div
               className={`${styles.evening} ${
                 checkAvailability("evening") ? styles.green : styles.red
-              }`}
+              } ${selected === "evening" ? styles.selected : ""}`}
             ></div>
           </button>
         </div>

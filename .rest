@@ -1,14 +1,8 @@
-POST http://localhost:3000/api/register
+POST https://rjp-v2.vercel.app/api/register
 Content-Type: application/json
 
 {
-    "price": "50.00",
-    "residency": "nonresident",
-    "pavilion": "Upper",
-    "time": "both",
-    "day": "2",
-    "month": "January",
-    "id": "124376"
+    "type": "generate-id"
 }
 
 ###

@@ -2,9 +2,26 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 4rem;
+  height: 8rem;
+  padding-inline: 4rem;
   position: relative;
   border-bottom: thin solid black;
+}
+
+.home-link {
+  text-decoration: none;
+  color: #777;
+  font-size: 5rem;
+  font-weight: bolder;
+  background-clip: text;
+  margin-block: -2rem;
+  background-image: linear-gradient(to right, cadetblue, sienna);
+  background-clip: text;
+  transition: 0.3s;
+}
+
+.home-link:hover {
+  color: #7770;
 }
 
 .background {
@@ -16,8 +33,9 @@
 }
 
 .main {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  height: calc(100vh - 8rem);
 }
 
 .nav {
@@ -38,4 +56,14 @@
   cursor: pointer;
   padding: 0.6rem 1rem;
   border-radius: 5px;
+  transition: 0.3s;
+  font-variation-settings: "wght" 400;
+}
+
+.nav button.next:hover {
+  background-color: #5f9ea0bb;
+}
+
+.nav button.back:hover {
+  background-color: #a0522ddd;
 }

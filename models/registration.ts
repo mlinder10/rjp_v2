@@ -9,6 +9,11 @@ const RegistrationSchema = new mongoose.Schema({
   price: String,
   month: String,
   day: String,
+  oid: String,
+  hasPaid: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 export default mongoose.models.Registration ||
