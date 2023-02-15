@@ -6,6 +6,8 @@ console.log(db.id);
 
 function getID() {
   try {
+    fs.writeFileSync("./test.txt", "test", { encoding: "utf-8" });
+
     let id = fs.readFileSync("./orders.txt", { encoding: "utf-8" });
     fs.writeFileSync("./orders.txt", (parseInt(id) + 1).toString(), {
       encoding: "utf-8",
