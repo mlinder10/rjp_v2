@@ -8,7 +8,12 @@ export default async function handler(
   switch (req.method) {
     case "GET": {
       try {
-        let val = await orderid.create({ value: req.query.value });
+        let id = req.query.value;
+        let intId = 0;
+        if (typeof id === "string") {
+          intId = parseInt(id);
+        }
+        let val = await orderid.create({ value: intId });
         console.log(val);
         return res.status(201);
       } catch (err: any) {

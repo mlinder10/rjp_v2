@@ -12,3 +12,7 @@ GET http://localhost:3000/api/postback?oid=5004
 ###
 
 GET http://localhost:3000/api/setOrders?value=5006
+
+###
+
+GET https://rjp-v2.vercel.app/api/setOrders?value=5006
