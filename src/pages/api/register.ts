@@ -1,8 +1,8 @@
+import db from "@/utils/db";
+console.log(db.id);
 import { NextApiRequest, NextApiResponse } from "next";
 import Registration from "../../../models/registration";
 import Order from "../../../models/orderid";
-import db from "@/utils/db";
-console.log(db.id);
 
 async function getID() {
   try {

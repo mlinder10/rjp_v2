@@ -1,3 +1,5 @@
+import db from "../../utils/db";
+console.log(db.id);
 import { NextApiRequest, NextApiResponse } from "next";
 import Registration from "../../../models/registration";
 

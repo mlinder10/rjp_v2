@@ -1,3 +1,5 @@
+import db from "../../utils/db";
+console.log(db.id);
 import orderid from "models/orderid";
 import { NextApiRequest, NextApiResponse } from "next";
 
