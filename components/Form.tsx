@@ -162,10 +162,7 @@ export default function Form({
       <div className={styles["pavilion-input"]}>
         <div onClick={() => choosePavilion("Upper")}>
           <label htmlFor="Upper">Upper Pavilion</label>
-          {!getBooked().includes("Upper") && (
-            <input type="radio" name="pavilion" id="Upper" value="Upper" />
-          )}
-          {getBooked().includes("Upper") && (
+          {(getBooked().includes("Upper") && (
             <input
               type="radio"
               name="pavilion"
@@ -173,14 +170,22 @@ export default function Form({
               value="Upper"
               disabled
             />
-          )}
+          )) ||
+            (options.pavilion === "Upper" && (
+              <input
+                type="radio"
+                name="pavilion"
+                id="Upper"
+                value="Upper"
+                checked
+              />
+            )) || (
+              <input type="radio" name="pavilion" id="Upper" value="Upper" />
+            )}
         </div>
         <div onClick={() => choosePavilion("Lower")}>
           <label htmlFor="Lower">Lower Pavilion</label>
-          {!getBooked().includes("Lower") && (
-            <input type="radio" name="pavilion" id="Lower" value="Lower" />
-          )}
-          {getBooked().includes("Lower") && (
+          {(getBooked().includes("Lower") && (
             <input
               type="radio"
               name="pavilion"
@@ -188,14 +193,22 @@ export default function Form({
               value="Lower"
               disabled
             />
-          )}
+          )) ||
+            (options.pavilion === "Lower" && (
+              <input
+                type="radio"
+                name="pavilion"
+                id="Lower"
+                value="Lower"
+                checked
+              />
+            )) || (
+              <input type="radio" name="pavilion" id="Lower" value="Lower" />
+            )}
         </div>
         <div onClick={() => choosePavilion("Hamlet")}>
-          <label htmlFor="Hamlet">Hamlet Street</label>
-          {!getBooked().includes("Hamlet") && (
-            <input type="radio" name="pavilion" id="Hamlet" value="Hamlet" />
-          )}
-          {getBooked().includes("Hamlet") && (
+          <label htmlFor="Hamlet">Hamlet Pavilion</label>
+          {(getBooked().includes("Hamlet") && (
             <input
               type="radio"
               name="pavilion"
@@ -203,8 +216,20 @@ export default function Form({
               value="Hamlet"
               disabled
             />
-          )}
+          )) ||
+            (options.pavilion === "Hamlet" && (
+              <input
+                type="radio"
+                name="pavilion"
+                id="Hamlet"
+                value="Hamlet"
+                checked
+              />
+            )) || (
+              <input type="radio" name="pavilion" id="Hamlet" value="Hamlet" />
+            )}
         </div>
+     
       </div>
       <div className={styles["residency-input"]}>
         <div onClick={() => setResidency("resident")}>
@@ -230,7 +255,7 @@ export default function Form({
           />
         </div>
       </div>
-      <button onClick={reserve}>Reserve</button>
+      <button className={styles.reserve} onClick={reserve}>Reserve</button>
     </section>
   );
 }

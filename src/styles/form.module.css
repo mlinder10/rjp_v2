@@ -1,4 +1,6 @@
 .section {
+  display: flex;
+  flex-direction: column;
   padding: 2rem;
   background-color: white;
 }
@@ -7,7 +9,15 @@
 .residency-input {
   display: flex;
   flex-direction: column;
-  padding-block: 2rem;
+  padding-block: 1rem;
+}
+
+.pavilion-input {
+  padding-top: 2rem;
+}
+
+.residency-input {
+  padding-bottom: 2rem;
 }
 
 .pavilion-input > div,
@@ -16,4 +26,20 @@
   align-items: center;
   width: 12rem;
   justify-content: space-between;
+}
+
+.reserve {
+  outline: none;
+  border: none;
+  margin-inline: 5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.reserve:hover {
+  background-color: #5f9ea0bb;
 }

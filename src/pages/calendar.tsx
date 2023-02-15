@@ -49,18 +49,7 @@ export async function getServerSideProps(context: NextPageContext) {
 
   return {
     props: {
-      registrations: [
-        {
-          time: "morning",
-          day: "1",
-          month: "January",
-          name: "name",
-          address: "address",
-          residency: "resident",
-          pavilion: "Upper",
-          hasPaid: true
-        }
-      ],
+      registrations
     },
   };
 }

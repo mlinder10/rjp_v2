@@ -9,6 +9,7 @@ export default async function handler(
     case "GET":
       try {
         let { oid } = req.query;
+        console.log(req.query);
         await Registration.updateOne({ oid }, { hasPaid: true });
         console.log(oid);
         return res.status(200).json({ message: "Transaction Successful" });
