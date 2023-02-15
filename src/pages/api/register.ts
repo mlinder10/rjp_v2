@@ -1,16 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import Registration from "../../../models/registration";
+import Order from "../../../models/orderid";
 import db from "@/utils/db";
-import fs from "fs";
 console.log(db.id);
 
-function getID() {
+async function getID() {
   try {
-    let id = fs.readFileSync("/tmp/orders.txt", { encoding: "utf-8" });
-    fs.writeFileSync("/tmp/orders.txt", (parseInt(id) + 1).toString(), {
-      encoding: "utf-8",
-    });
-
+    let orders = await Order.find();
+    let id = orders[0].value;
+    Order.updateOne({ value: id }, { value: id + 1 });
     return id;
   } catch (err: any) {
     console.error(err.message);
@@ -26,8 +24,8 @@ export default async function handler(
     case "GET":
       try {
         if (req.query.type === "id") {
-          let id = getID();
-          if (id !== "0") return res.status(200).json({ message: getID() });
+          let id = await getID();
+          if (id !== "0") return res.status(200).json({ message: id });
           return res
             .status(500)
             .json({ message: "Error reading/writing orders" });
