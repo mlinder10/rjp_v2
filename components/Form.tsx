@@ -146,7 +146,7 @@ export default function Form({
           process.env.NEXT_PUBLIC_TYPE
         }&payfor=${"Pavilion"}&oid=${oid}&amt=${getPrice()}&account=${
           process.env.NEXT_PUBLIC_ACCOUNT
-        }&surl=${window.location.origin}&rurl=${window.location.href}`
+        }&surl=${window.location.origin}&rurl=${window.location.origin}`
       )
     );
   }

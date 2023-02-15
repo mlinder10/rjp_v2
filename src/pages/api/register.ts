@@ -45,15 +45,19 @@ export default async function handler(
           .json({ message: "Registration created and saved" });
       } catch (err: any) {
         console.error(err?.message);
-        return res.status(500).json({ message: err?.message });
+        return res.status(502).json({ message: err?.message });
       }
     case "PATCH":
       break;
     case "DELETE":
-      break;
+      try {
+        let ret = await Registration.deleteMany();
+        return res.status(202).json({ message: ret });
+      } catch (err: any) {
+        console.error(err.message);
+        return res.status(502).json({ message: err.message });
+      }
     default:
-      return res
-        .status(403)
-        .json({ message: "Access to this api route is forbidden" });
+      return res.status(405).json({ message: "No target API method" });
   }
 }
