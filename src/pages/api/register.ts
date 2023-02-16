@@ -7,9 +7,10 @@ import Order from "../../../models/orderid";
 async function getID() {
   try {
     let orders = await Order.find();
-    let id = orders[0].value;
-    await Order.updateOne({ value: id }, { value: id + 1 });
-    return id;
+    let value = orders[0].value;
+    let newValue = value + 1;
+    await Order.updateOne({ value }, { value: newValue });
+    return value;
   } catch (err: any) {
     console.error(err.message);
     return "0";
