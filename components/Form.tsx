@@ -153,12 +153,27 @@ export default function Form({
 
   return (
     <section className={styles.section}>
-      <p>Price: {formatPrice()}</p>
+      <div>
+        <span>Price:</span>
+        <span>{formatPrice()}</span>
+      </div>
       <br />
-      <p>Date: {formatDate()}</p>
-      <p>Pavilion: {formatPavilion()}</p>
-      <p>Time: {formatTime()}</p>
-      <p>Residency: {formatResidency()}</p>
+      <div>
+        <span>Date:</span>
+        <span>{formatDate()}</span>
+      </div>
+      <div>
+        <span>Pavilion:</span>
+        <span>{formatPavilion()}</span>
+      </div>
+      <div>
+        <span>Time:</span>
+        <span>{formatTime()}</span>
+      </div>
+      <div>
+        <span>Residency:</span>
+        <span>{formatResidency()}</span>
+      </div>
       <div className={styles["pavilion-input"]}>
         <div onClick={() => choosePavilion("Upper")}>
           <label htmlFor="Upper">Upper Pavilion</label>
@@ -229,7 +244,6 @@ export default function Form({
               <input type="radio" name="pavilion" id="Hamlet" value="Hamlet" />
             )}
         </div>
-     
       </div>
       <div className={styles["residency-input"]}>
         <div onClick={() => setResidency("resident")}>
@@ -255,7 +269,9 @@ export default function Form({
           />
         </div>
       </div>
-      <button className={styles.reserve} onClick={reserve}>Reserve</button>
+      <button className={styles.reserve} onClick={reserve}>
+        Reserve
+      </button>
     </section>
   );
 }

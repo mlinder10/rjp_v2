@@ -3,6 +3,13 @@
   flex-direction: column;
   padding: 2rem;
   background-color: white;
+  font-weight: bold;
+}
+
+.section > div {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .pavilion-input,
@@ -24,7 +31,7 @@
 .residency-input > div {
   display: flex;
   align-items: center;
-  width: 12rem;
+  width: 100%;
   justify-content: space-between;
 }
 

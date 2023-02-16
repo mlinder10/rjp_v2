@@ -11,6 +11,7 @@
   right: 2rem;
   top: 2rem;
   gap: 1px;
+  padding-bottom: 2rem;
 }
 
 .month > span {

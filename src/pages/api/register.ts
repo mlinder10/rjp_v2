@@ -8,7 +8,7 @@ async function getID() {
   try {
     let orders = await Order.find();
     let id = orders[0].value;
-    Order.updateOne({ value: id }, { value: id + 1 });
+    await Order.updateOne({ value: id }, { value: id + 1 });
     return id;
   } catch (err: any) {
     console.error(err.message);
