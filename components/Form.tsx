@@ -147,7 +147,7 @@ export default function Form({
         }&payfor=${"Pavilion"}&oid=${oid}&amt=${getPrice()}&account=${
           process.env.NEXT_PUBLIC_ACCOUNT
         }&surl=${window.location.origin}&rurl=${window.location.origin}`
-      )
+      ), "_self"
     );
   }
 
@@ -172,7 +172,7 @@ export default function Form({
       </div>
       <div>
         <span>Residency:</span>
-        <span>{formatResidency()}</span>
+        <span className={styles["formatted-residency"]}>{formatResidency()}</span>
       </div>
       <div className={styles["pavilion-input"]}>
         <div onClick={() => choosePavilion("Upper")}>

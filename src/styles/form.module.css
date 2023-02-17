@@ -27,6 +27,11 @@
   padding-bottom: 2rem;
 }
 
+.formatted-residency {
+  max-width: 8rem;
+  text-align: right;
+}
+
 .pavilion-input > div,
 .residency-input > div {
   display: flex;

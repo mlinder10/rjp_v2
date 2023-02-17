@@ -1,7 +1,7 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
   height: 8rem;
   padding-inline: 4rem;
   position: relative;
@@ -13,7 +13,6 @@
   color: #777;
   font-size: 5rem;
   font-weight: bolder;
-  background-clip: text;
   margin-block: -2rem;
   background-image: linear-gradient(to right, cadetblue, sienna);
   background-clip: text;

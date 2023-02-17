@@ -142,6 +142,11 @@ export default function Calendar({ registrations }: pageProps) {
   return (
     <>
       <header className={styles.header}>
+          <Filter
+            selected={filter}
+            options={["Upper", "Lower", "Hamlet"]}
+            setSelected={setFilter}
+          />
         <Link className={styles["home-link"]} style={{ zIndex: 3 }} href="/">
           RJP
         </Link>
@@ -160,11 +165,6 @@ export default function Calendar({ registrations }: pageProps) {
             chevron_right
           </button>
         </div>
-        <Filter
-          selected={filter}
-          options={["Upper", "Lower", "Hamlet"]}
-          setSelected={setFilter}
-        />
       </header>
       <main className={styles.main}>
         <Form
