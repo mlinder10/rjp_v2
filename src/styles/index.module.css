@@ -19,9 +19,9 @@
   z-index: -1;
   position: absolute;
   left: 0;
-  right: 0;
   top: 0;
   bottom: 0;
+  right: 0;
 }
 
 .links {
@@ -99,6 +99,11 @@
 }
 
 @media (max-width: 750px) {
+  .img-wrapper {
+    width: 600px;
+    translate: -100px;
+  }
+
   .corner {
     rotate: -25deg;
     height: 40%;
