@@ -86,3 +86,35 @@
 .selected:not(.red) {
   background-color: cadetblue;
 }
+
+@media (max-width: 1400px) {
+  .both,
+  .morning,
+  .evening {
+    width: 3rem;
+  }
+
+  .link-wrapper {
+    height: 5rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .left,
+  .right,
+  .left button {
+    width: 100%;
+  }
+
+  .both,
+  .morning,
+  .evening {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .date {
+    font-size: 1rem;
+  }
+}

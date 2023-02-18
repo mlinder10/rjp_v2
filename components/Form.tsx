@@ -33,9 +33,9 @@ export default function Form({
 
   function formatTime() {
     if (options.time === "") return "Select A Time";
-    if (options.time === "both") return "8:00am - 5:00pm";
-    if (options.time === "morning") return "8:00am - 12:00pm";
-    if (options.time === "evening") return "1:00pm - 5:00pm";
+    if (options.time === "both") return "8:00am - Dusk";
+    if (options.time === "morning") return "8:00am - 1:00pm";
+    if (options.time === "evening") return "2:00pm - Dusk";
   }
 
   function formatResidency() {
@@ -136,6 +136,20 @@ export default function Form({
       return;
     }
 
+    let payFor = "Pavilion"
+
+    switch (options.pavilion) {
+      case "Upper":
+        payFor = "Upper Pavilion"
+        break
+      case "Lower":
+        payFor = "Lower Pavilion"
+        break
+      case "Hamlet":
+        payFor = "Hamlet St. Pavilion"
+        break
+    }
+
     window.open(
       encodeURI(
         `https://online.go2gov.net/paybyhid/pay?pid=${
@@ -144,7 +158,7 @@ export default function Form({
           process.env.NEXT_PUBLIC_CLIENTSUBID
         }&type=${
           process.env.NEXT_PUBLIC_TYPE
-        }&payfor=${"Pavilion"}&oid=${oid}&amt=${getPrice()}&account=${
+        }&payfor=${payFor}&oid=${oid}&amt=${getPrice()}&account=${
           process.env.NEXT_PUBLIC_ACCOUNT
         }&surl=${window.location.origin}&rurl=${window.location.origin}`
       ), "_self"
@@ -153,6 +167,9 @@ export default function Form({
 
   return (
     <section className={styles.section}>
+      <div style={{paddingBottom: "1rem"}}>
+        <p>*NO REFUNDS*</p>
+      </div>
       <div>
         <span>Price:</span>
         <span>{formatPrice()}</span>

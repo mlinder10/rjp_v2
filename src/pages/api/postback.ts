@@ -10,8 +10,12 @@ export default async function handler(
   switch (req.method) {
     case "GET":
       try {
-        let { oid } = req.query;
-        await Registration.updateOne({ oid }, { hasPaid: true });
+        let { oid, cname, caddr } = req.query;
+        if (typeof caddr === "string") caddr = decodeURIComponent(caddr);
+        await Registration.updateOne(
+          { oid },
+          { hasPaid: true, name: cname, address: caddr }
+        );
         return res.status(200).json({ message: "Transaction Successful" });
       } catch (err: any) {
         console.error(err.message);

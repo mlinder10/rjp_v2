@@ -23,17 +23,9 @@
   color: #7770;
 }
 
-.background {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-
 .main {
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 2fr;
   height: calc(100vh - 8rem);
 }
 
@@ -65,4 +57,42 @@
 
 .nav button.back:hover {
   background-color: #a0522ddd;
+}
+
+@media (max-width: 1000px) {
+  .main {
+    display: flex;
+    flex-direction: column-reverse;
+    height: auto;
+  }
+
+  .home-link {
+    font-size: 4rem;
+    margin-block: 0;
+    margin-bottom: 5rem;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+  }
+
+  .nav {
+    position: absolute;
+    bottom: 1rem;
+    right: 4rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .home-link {
+    margin-bottom: 12rem;
+  }
+
+  .nav {
+    left: 50%;
+    translate: -50%;
+    bottom: 1rem;
+  }
 }

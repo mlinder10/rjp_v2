@@ -12,7 +12,6 @@
 }
 
 .contact {
-  /* text-decoration: none; */
   color: black;
 }
 
@@ -45,6 +44,7 @@
   overflow: hidden;
   font-weight: 500;
   transition: 0.3s ease-in-out;
+  text-align: center;
 }
 
 .links > a:last-child {
@@ -90,4 +90,39 @@
   rotate: -30deg;
   background-color: sienna;
   box-shadow: 0 0 10px sienna;
+}
+
+@media (max-width: 1000px) {
+  .links > a {
+    padding: 0.8rem 1.1rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .corner {
+    rotate: -25deg;
+    height: 40%;
+    width: 200%;
+  }
+
+  .header > h1 {
+    font-size: 2rem;
+  }
+
+  .header {
+    left: 2rem;
+    top: 2rem;
+  }
+
+  .links {
+    left: 0;
+    right: 0;
+    translate: 0;
+    justify-content: space-evenly;
+    gap: 0;
+  }
+
+  .links > a {
+    font-size: 0.8rem;
+  }
 }

@@ -14,7 +14,7 @@ export default function Pricing() {
       <main className={styles.main}>
         <section className={styles.section}>
           <div className={styles.head}>
-            <p>Upper</p>
+            <p className={styles["upper-title"]}>Upper</p>
           </div>
           <div className={styles.body}>
             <table className={styles.table}>

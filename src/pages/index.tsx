@@ -7,7 +7,7 @@ import axios from "axios";
 
 async function open() {
   let res = await axios.get(`${process.env.NEXT_PUBLIC_ROOT}/api/register`)
-  console.log(res.data)
+  console.log(res.data.length)
 }
 
 export default function Home() {

@@ -33,7 +33,7 @@ export default function Day({
     let pavilion = options.pavilion;
     if (filter.length === 1) pavilion = filter[0];
     for (let r of registrations) {
-      if (r.pavilion === pavilion) pavilion = "";
+      if (r.pavilion === pavilion && (r.time === options.time || options.time === "both" || r.time === "both")) pavilion = "";
     }
     changeOptions(date.toString(), pavilion, time);
   }
@@ -49,7 +49,6 @@ export default function Day({
   if (date === 0) return <span></span>;
 
   return (
-    <div>
       <div className={styles["link-wrapper"]}>
         <div className={styles.left}>
           <button onClick={() => handleSelect("both")}>
@@ -80,6 +79,5 @@ export default function Day({
         </div>
         <p className={styles.date}>{date}</p>
       </div>
-    </div>
   );
 }

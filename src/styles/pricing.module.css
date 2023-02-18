@@ -17,7 +17,8 @@
   transition: 0.3s;
 }
 
-.header a:hover {
+.header a:hover,
+.header a:focus {
   color: transparent;
 }
 
@@ -35,6 +36,7 @@
   grid-template-rows: 1fr 5fr;
   border: thin solid black;
   padding-inline: 2rem;
+  transition: 0.3s;
 }
 
 .head {
@@ -71,4 +73,45 @@
 
 .table .residency {
   text-align: left;
+}
+
+.section:hover {
+  box-shadow: 0 0 10px cadetblue;
+}
+
+@media (max-width: 1000px) {
+  .head p {
+    font-size: 1.4rem;
+  }
+
+  .table td {
+    font-size: 0.8rem;
+  }
+
+  .header a {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 750px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding-block: 2rem;
+  }
+
+  .header a {
+    font-size: 3rem;
+  }
+
+  .header {
+    height: 6rem;
+  }
+
+  .head > p {
+    font-size: 1rem;
+    padding-bottom: 1rem;
+  }
 }

@@ -1,3 +1,10 @@
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .section {
   display: flex;
   flex-direction: column;
@@ -54,4 +61,25 @@
 
 .reserve:hover {
   background-color: #5f9ea0bb;
+}
+
+@media (max-width: 1000px) {
+  .section {
+    padding-inline: 20%;
+    padding-top: 4rem;
+  }
+
+  .reserve {
+    width: 30%;
+    padding-inline: 0.5rem;
+    margin-top: 1rem;
+    margin-inline: 35%;
+  }
+}
+
+@media (max-width: 700px) {
+  .section {
+    padding-inline: 10%;
+    font-size: 0.9rem;
+  }
 }

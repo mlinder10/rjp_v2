@@ -1,6 +1,5 @@
 .section {
   position: relative;
-  /* overflow-y: scroll; */
 }
 
 .month {
@@ -18,8 +17,21 @@
   padding-bottom: 1rem;
 }
 
-.name {
-  font-weight: bold;
-  font-size: 1.8rem;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+@media (max-width: 1200px) {
+  .month {
+    right: 0;
+  }
+}
+
+@media (max-width: 1000px) {
+  .month {
+    position: relative;
+    padding-inline: 1rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .month {
+    padding-inline: 0;
+  }
 }

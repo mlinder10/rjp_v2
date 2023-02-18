@@ -142,11 +142,11 @@ export default function Calendar({ registrations }: pageProps) {
   return (
     <>
       <header className={styles.header}>
-          <Filter
-            selected={filter}
-            options={["Upper", "Lower", "Hamlet"]}
-            setSelected={setFilter}
-          />
+        <Filter
+          selected={filter}
+          options={["Upper", "Lower", "Hamlet"]}
+          setSelected={setFilter}
+        />
         <Link className={styles["home-link"]} style={{ zIndex: 3 }} href="/">
           RJP
         </Link>
@@ -167,25 +167,29 @@ export default function Calendar({ registrations }: pageProps) {
         </div>
       </header>
       <main className={styles.main}>
-        <Form
-          options={options}
-          registrations={filterMonths(registrations, options.month)}
-          changeOptions={changeOptions}
-          weekend={checkWeekend()}
-        />
-        {MONTHS.map((m) => (
-          <Month
+        <section className={styles.form}>
+          <Form
             options={options}
-            selected={selectedMonth}
-            key={m.name}
-            name={m.name}
-            days={m.days}
-            offset={m.offset}
-            registrations={filterMonths(filterByPav(), m.name)}
-            filter={filter}
+            registrations={filterMonths(registrations, options.month)}
             changeOptions={changeOptions}
+            weekend={checkWeekend()}
           />
-        ))}
+        </section>
+        <section className={styles.month}>
+          {MONTHS.map((m) => (
+            <Month
+              options={options}
+              selected={selectedMonth}
+              key={m.name}
+              name={m.name}
+              days={m.days}
+              offset={m.offset}
+              registrations={filterMonths(filterByPav(), m.name)}
+              filter={filter}
+              changeOptions={changeOptions}
+            />
+          ))}
+        </section>
       </main>
     </>
   );
