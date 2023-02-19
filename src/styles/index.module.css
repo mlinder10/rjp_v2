@@ -92,6 +92,13 @@
   box-shadow: 0 0 10px sienna;
 }
 
+.main {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
 @media (max-width: 1000px) {
   .links > a {
     padding: 0.8rem 1.1rem;
@@ -99,6 +106,11 @@
 }
 
 @media (max-width: 750px) {
+  .img-wrapper {
+    width: 600px;
+    translate: -100px;
+  }
+
   .corner {
     rotate: -25deg;
     height: 40%;

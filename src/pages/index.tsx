@@ -6,14 +6,14 @@ import { useEffect } from "react";
 import axios from "axios";
 
 async function open() {
-  let res = await axios.get(`${process.env.NEXT_PUBLIC_ROOT}/api/register`)
-  console.log(res.data.length)
+  let res = await axios.get(`${process.env.NEXT_PUBLIC_ROOT}/api/register`);
+  console.log(res.data.length);
 }
 
 export default function Home() {
   useEffect(() => {
-    open()
-  }, [])
+    open();
+  }, []);
 
   return (
     <>
@@ -23,14 +23,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.corner}>
-        <div className={styles["corner-accent-1"]}></div>
-        <div className={styles["corner-accent-2"]}></div>
-      </div>
-      <header className={styles.header}>
-        <h1>Russell Joy Park</h1>
-      </header>
       <main className={styles.main}>
+        <div className={styles.corner}>
+          <div className={styles["corner-accent-1"]}></div>
+          <div className={styles["corner-accent-2"]}></div>
+        </div>
+        <header className={styles.header}>
+          <h1>Russell Joy Park</h1>
+        </header>
         <div className={styles["img-wrapper"]}>
           <Image src="/images/home_page_2.jpg" alt="" fill={true} />
         </div>
