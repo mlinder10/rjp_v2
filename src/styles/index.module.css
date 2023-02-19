@@ -99,11 +99,6 @@
 }
 
 @media (max-width: 750px) {
-  .img-wrapper {
-    width: 600px;
-    translate: -100px;
-  }
-
   .corner {
     rotate: -25deg;
     height: 40%;
