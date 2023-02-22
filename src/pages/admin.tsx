@@ -37,6 +37,7 @@ export default function Admin({ registrations }: pageProps) {
         `${process.env.NEXT_PUBLIC_ROOT}/api/register?type=single&id=${id}`
       );
       console.log(res.data);
+      refreshRegistrations()
     } catch (err: any) {
       console.error(err.message);
     }
@@ -48,6 +49,7 @@ export default function Admin({ registrations }: pageProps) {
         `${process.env.NEXT_PUBLIC_ROOT}/api/register?type=cleanup`
       );
       console.log(res.data);
+      refreshRegistrations()
     } catch (err: any) {
       console.error(err.message);
     }
@@ -59,6 +61,7 @@ export default function Admin({ registrations }: pageProps) {
         `${process.env.NEXT_PUBLIC_ROOT}/api/register?type=reset`
       );
       console.log(res.data);
+      refreshRegistrations()
     } catch (err: any) {
       console.error(err.message);
     }
@@ -66,7 +69,7 @@ export default function Admin({ registrations }: pageProps) {
 
   async function addRegistration() {
     try {
-      let res = await axios.post(`${process.env.NEXT_PUBLIC}/api/register`, {
+      let res = await axios.post(`${process.env.NEXT_PUBLIC_ROOT}/api/register`, {
         name: nameRef.current?.value,
         address: addressRef.current?.value,
         pavilion: pav,
@@ -79,8 +82,18 @@ export default function Admin({ registrations }: pageProps) {
         hasPaid: true,
       });
       console.log(res.data);
+      refreshRegistrations()
     } catch (err: any) {
       console.error(err.message);
+    }
+  }
+
+  async function refreshRegistrations() {
+    try {
+      let res = await axios.get(`${process.env.NEXT_PUBLIC_ROOT}/api/register`)
+      registrations = res.data
+    } catch (err:any) {
+      console.error(err.message)
     }
   }
 
