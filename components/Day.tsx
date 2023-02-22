@@ -44,7 +44,7 @@ export default function Day({
       if (options.time === "morning") setSelected("morning");
       if (options.time === "evening") setSelected("evening");
     }
-  }, [options, month]);
+  }, [options, month, date]);
 
   if (date === 0) return <span></span>;
 

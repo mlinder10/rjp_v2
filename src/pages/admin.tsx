@@ -171,7 +171,7 @@ export default function Admin({ registrations }: pageProps) {
       <section>
         <div>
           {registrations.map((r) => (
-            <div className={styles["remove-option"]}>
+            <div key={r._id} className={styles["remove-option"]}>
               <span>Paid: {`${r.hasPaid}`}</span>
               <span>
                 Selected Date: {r.month}, {r.day}

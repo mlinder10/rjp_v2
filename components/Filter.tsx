@@ -30,7 +30,7 @@ export default function Filter({
 
   useEffect(() => {
     if (selected.length === options.length) setShowing(false);
-  }, [selected]);
+  }, [selected, options.length]);
 
   return (
     <section className={styles.wrapper}>
