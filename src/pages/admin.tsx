@@ -203,60 +203,7 @@ export async function getServerSideProps(context: NextPageContext) {
 
   return {
     props: {
-      registrations: [
-        {
-          name: "first last",
-          address: "123 address",
-          oid: "5012",
-          time: "morning",
-          pavilion: "Upper",
-          _id: "g394g",
-          residency: "resident",
-          price: "70",
-          hasPaid: false,
-          month: "January",
-          day: "5",
-        },
-        {
-          name: "first last",
-          address: "123 address",
-          oid: "5012",
-          time: "morning",
-          pavilion: "Upper",
-          _id: "g394g",
-          residency: "resident",
-          price: "70",
-          hasPaid: false,
-          month: "January",
-          day: "5",
-        },
-        {
-          name: "first last",
-          address: "123 address",
-          oid: "5012",
-          time: "morning",
-          pavilion: "Upper",
-          _id: "g394g",
-          residency: "resident",
-          price: "70",
-          hasPaid: false,
-          month: "January",
-          day: "5",
-        },
-        {
-          name: "first last",
-          address: "123 address",
-          oid: "5012",
-          time: "morning",
-          pavilion: "Upper",
-          _id: "g394g",
-          residency: "resident",
-          price: "70",
-          hasPaid: false,
-          month: "January",
-          day: "5",
-        },
-      ],
+      registrations
     },
   };
 }
