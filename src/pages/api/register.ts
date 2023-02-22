@@ -52,10 +52,18 @@ export default async function handler(
       break;
     case "DELETE":
       try {
-        if (req.query.type !== "cleanup" && req.query.type !== "reset")
+        if (
+          req.query.type !== "cleanup" &&
+          req.query.type !== "reset" &&
+          req.query.type !== "single"
+        )
           return res.status(400).json({ message: "Invalid Request" });
         if (req.query.type === "cleanup") {
           let ret = await Registration.deleteMany({ hasPaid: false });
+          return res.status(202).json({ message: ret });
+        }
+        if (req.query.type === "single") {
+          let ret = await Registration.deleteOne({ oid: req.query.id });
           return res.status(202).json({ message: ret });
         }
         let ret = await Registration.deleteMany();

@@ -27,6 +27,7 @@ export type registration = {
   hasPaid: boolean;
   month: string;
   day: string;
+  oid: string;
 };
 
 export default function calendar({ registrations }: pageProps) {

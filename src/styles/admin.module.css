@@ -1,0 +1,48 @@
+.login-main {
+  display: grid;
+  place-content: center;
+  height: 100vh;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.login-box > div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.remove-option {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  padding: 2rem;
+}
+
+.create {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 20vw;
+  gap: 0.5rem;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+  margin-block: 2rem;
+}
+
+.day {
+  position: relative;
+}
+
+.day::after {
+  content: "Numeric day of the month";
+  position: absolute;
+  left: 300%;
+  width: 13rem;
+}
