@@ -21,7 +21,6 @@ export default function Home() {
         <title>Russel Joy Pavilions</title>
         <meta name="description" content="Book a pavilion online." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
         <div className={styles.corner}>
