@@ -1,7 +1,7 @@
 {
   "Upper": {
     "resident": {
-        "weekend": 60.00,
+        "weekend": 1.00,
         "weekday": 1.00
     },
     "nonresident": {
