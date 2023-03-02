@@ -151,7 +151,7 @@ export default function Form({
     }
 
     let URI = encodeURI(
-      `https://online.go2gov.net/paybyhid/pay?pid=${
+      `https://secure.epayonline.net/paybycreditcard/pay?pid=${
         process.env.NEXT_PUBLIC_PID
       }&cid=${process.env.NEXT_PUBLIC_CID}&clientsubid=${
         process.env.NEXT_PUBLIC_CLIENTSUBID
@@ -162,7 +162,6 @@ export default function Form({
       }&surl=${window.location.origin}&rurl=${window.location.origin}`
     )
 
-    console.log(URI)
 
     window.open(
       URI, "_self"
