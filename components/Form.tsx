@@ -150,6 +150,8 @@ export default function Form({
         break
     }
 
+    let acct = `${payFor}: ${options.month}, ${options.date}`
+
     let URI = encodeURI(
       `https://secure.epayonline.net/paybycreditcard/pay?pid=${
         process.env.NEXT_PUBLIC_PID
@@ -158,7 +160,7 @@ export default function Form({
       }&type=${
         process.env.NEXT_PUBLIC_TYPE
       }&payfor=${payFor}&oid=${oid}&amt=${getPrice()}&account=${
-        process.env.NEXT_PUBLIC_ACCOUNT
+        acct
       }&surl=${window.location.origin}&rurl=${window.location.origin}`
     )
 
