@@ -28,6 +28,8 @@ export type registration = {
   month: string;
   day: string;
   oid: string;
+  phone: string;
+  details: string;
 };
 
 export default function calendar({ registrations }: pageProps) {

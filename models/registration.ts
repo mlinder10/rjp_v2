@@ -10,6 +10,8 @@ const RegistrationSchema = new mongoose.Schema({
   month: String,
   day: String,
   oid: String,
+  phone: String,
+  details: String,
   hasPaid: {
     type: Boolean,
     default: false,

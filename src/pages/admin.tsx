@@ -17,6 +17,8 @@ export default function Admin({ registrations }: pageProps) {
   const addressRef = React.createRef<HTMLInputElement>();
   const dayRef = React.createRef<HTMLInputElement>();
   const priceRef = React.createRef<HTMLInputElement>();
+  const phoneRef = React.createRef<HTMLInputElement>();
+  const detailsRef = React.createRef<HTMLTextAreaElement>();
 
   const [pav, setPav] = useState("Upper");
   const [time, setTime] = useState("both");
@@ -80,6 +82,8 @@ export default function Admin({ registrations }: pageProps) {
         oid: "Manually Entered Registration",
         price: priceRef.current?.value,
         hasPaid: true,
+        details: detailsRef.current?.value,
+        phone: phoneRef.current?.value
       });
       console.log(res.data);
       refreshRegistrations()
@@ -174,6 +178,10 @@ export default function Admin({ registrations }: pageProps) {
           <input ref={dayRef} type="text" />
           <label>Price</label>
           <input ref={priceRef} type="number" />
+          <label htmlFor="">Phone</label>
+          <input ref={phoneRef} type="number" />
+          <label htmlFor="">Details</label>
+          <textarea ref={detailsRef} name="" id="" cols={30} rows={10}></textarea>
           <button onClick={addRegistration}>Add Registration</button>
         </section>
         <section>
@@ -193,9 +201,11 @@ export default function Admin({ registrations }: pageProps) {
               <span>Time: {r.time}</span>
               <span>{r.name}</span>
               <span>{r.address}</span>
+              <span>{r.phone}</span>
               <span>{r.residency}</span>
               <span>${r.price}</span>
               <span>Order ID: {r.oid}</span>
+              <span>{r.details}</span>
               <button onClick={() => removeOne(r.oid)}>Remove Order</button>
             </div>
           ))}

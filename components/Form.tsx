@@ -18,6 +18,8 @@ export default function Form({
   changeOptions,
 }: pageProps) {
   const [residency, setResidency] = useState("");
+  const [phone, setPhone] = useState("");
+  const [details, setDetails] = useState("");
 
   function formatDate() {
     if (options.month === "" || options.time === "") return "Select A Date";
@@ -107,6 +109,8 @@ export default function Form({
   async function reserve() {
     if (getPrice() === undefined) return;
 
+    if (phone === "") return;
+
     let oid = "0";
     try {
       let orderNum = await axios.get(
@@ -128,6 +132,8 @@ export default function Form({
           price: getPrice(),
           month: options.month,
           day: options.date,
+          phone,
+          details,
           oid,
         }
       );
@@ -136,21 +142,21 @@ export default function Form({
       return;
     }
 
-    let payFor = "Pavilion"
+    let payFor = "Pavilion";
 
     switch (options.pavilion) {
       case "Upper":
-        payFor = "Upper Pavilion"
-        break
+        payFor = "Upper Pavilion";
+        break;
       case "Lower":
-        payFor = "Lower Pavilion"
-        break
+        payFor = "Lower Pavilion";
+        break;
       case "Hamlet":
-        payFor = "Hamlet St. Pavilion"
-        break
+        payFor = "Hamlet St. Pavilion";
+        break;
     }
 
-    let acct = `${payFor}: ${options.month}, ${options.date}`
+    let acct = `${payFor}: ${options.month}, ${options.date}`;
 
     let URI = encodeURI(
       `https://secure.epayonline.net/paybycreditcard/pay?pid=${
@@ -159,20 +165,17 @@ export default function Form({
         process.env.NEXT_PUBLIC_CLIENTSUBID
       }&type=${
         process.env.NEXT_PUBLIC_TYPE
-      }&payfor=${payFor}&oid=${oid}&amt=${getPrice()}&account=${
-        acct
-      }&surl=${window.location.origin}&rurl=${window.location.origin}`
-    )
-
-
-    window.open(
-      URI, "_self"
+      }&payfor=${payFor}&oid=${oid}&amt=${getPrice()}&account=${acct}&surl=${
+        window.location.origin
+      }&rurl=${window.location.origin}&pho=${phone}`
     );
+
+    window.open(URI, "_self");
   }
 
   return (
     <section className={styles.section}>
-      <div style={{paddingBottom: "1rem"}}>
+      <div style={{ paddingBottom: "1rem" }}>
         <p>*NO REFUNDS*</p>
       </div>
       <div>
@@ -194,7 +197,9 @@ export default function Form({
       </div>
       <div>
         <span>Residency:</span>
-        <span className={styles["formatted-residency"]}>{formatResidency()}</span>
+        <span className={styles["formatted-residency"]}>
+          {formatResidency()}
+        </span>
       </div>
       <div className={styles["pavilion-input"]}>
         <div onClick={() => choosePavilion("Upper")}>
@@ -291,6 +296,18 @@ export default function Form({
           />
         </div>
       </div>
+      <div>
+        <label htmlFor="">Phone Number</label>
+        <input onChange={(e) => setPhone(e.target.value)} type="number" />
+      </div>
+      <label htmlFor="">Occupancy, Purpose of Event, and Third Parties Involved</label>
+      <textarea
+        onChange={(e) => setDetails(e.target.value)}
+        name=""
+        id=""
+        cols={30}
+        rows={10}
+      ></textarea>
       <button className={styles.reserve} onClick={reserve}>
         Reserve
       </button>
